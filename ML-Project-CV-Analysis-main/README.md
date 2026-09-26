@@ -1,308 +1,432 @@
-# 🚀 TonyCV: AI-Powered Career Intelligence Platform
+# 🚀 SmartVision Analyzer
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python: 3.12+](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
-[![React: 19](https://img.shields.io/badge/React-19-61DAFB.svg)](https://react.dev/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688.svg)](https://fastapi.tiangolo.com/)
-[![ML: Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn-F7931E.svg)](https://scikit-learn.org/)
-[![Frontend: GitHub Pages](https://img.shields.io/badge/Frontend-GitHub%20Pages-222222.svg)](https://prashant-singh-rawat.github.io/ML-Project-CV-Analysis/)
-[![Backend: Render](https://img.shields.io/badge/Backend-Render-46E3B7.svg)](https://tonycv-backend.onrender.com)
-[![CI/CD](https://github.com/Prashant-Singh-Rawat/ML-Project-CV-Analysis/actions/workflows/ci.yml/badge.svg)](https://github.com/Prashant-Singh-Rawat/ML-Project-CV-Analysis/actions)
+**SmartVision Analyzer** is an AI-powered career intelligence platform designed to help students, job seekers, and recruiters analyze resumes, understand career opportunities, identify skill gaps, and improve job readiness.
 
-**TonyCV** is a modern, AI-Powered Career Intelligence Platform designed to provide users with comprehensive career analysis and guidance. By leveraging Machine Learning and Natural Language Processing, TonyCV offers an interactive career coaching suite that goes far beyond standard resume parsing. It equips candidates, job seekers, and recruiters with a complete 360° talent analysis system.
-
-🌐 **Live App**: [prashant-singh-rawat.github.io/ML-Project-CV-Analysis](https://prashant-singh-rawat.github.io/ML-Project-CV-Analysis/)
-🔗 **API Backend**: [tonycv-backend.onrender.com](https://tonycv-backend.onrender.com)
-🏠 **Local Frontend**: [http://localhost:5173](http://localhost:5173)
-🏠 **Local Backend**: [http://localhost:8000](http://localhost:8000)
-
-> **⚠️ IMPORTANT FOR CONTRIBUTORS:**
-> Please **test all your changes on localhost first**. Do not directly modify the files connected to the production deployments (Render or Vercel) without local verification. Always run the app locally and ensure everything works before pushing your changes.
+The platform combines **Machine Learning, Natural Language Processing, semantic matching, and interactive career analytics** to provide intelligent career-related insights.
 
 ---
 
-## 🆕 What's New — v3.0.0 (Latest)
+## ✨ Features
 
-| Feature | Route | Description |
-|:---|:---|:---|
-| ✨ AI Resume Rewrite Assistant | `/ai-rewrite` | Transforms generic resume content into ATS-optimized language |
-| 📊 ATS Resume Score | `/ats-score` | Comprehensive 0–100 ATS compatibility score with recommendations |
-| 🎯 Job Description Matcher | `/jd-match` | Match your CV against any JD with semantic similarity analysis |
-| 🗺️ Interactive Career Roadmap | `/career-roadmap` | Personalized step-by-step career growth plan |
-| 🐙 GitHub Intelligence | `/portfolio-analyzer` | Deep GitHub developer score, language analysis & activity |
-| 🌐 Portfolio Analyzer | `/portfolio-analyzer` | Multi-platform (GitHub, LinkedIn, LeetCode) portfolio review |
-| 🎤 AI Interview Simulator | `/interview-simulator` | Technical, HR & behavioral interview practice with scoring |
-| 💰 Salary Predictor | `/salary-predict` | AI-estimated salary ranges by role, location & skills |
-| 📈 Skill Gap Analysis | `/skill-gap` | Interactive gap dashboard with curated learning resources |
-| 🏆 Recruiter Dashboard | `/recruiter` | Multi-candidate ranking, comparison & export tools |
-| 🧠 Explainable AI | (integrated) | Human-readable factor explanations for every ML prediction |
-| 📊 Analytics Dashboard | (integrated) | Application tracking and score improvement history |
+| Feature                        | Description                                                   |
+| ------------------------------ | ------------------------------------------------------------- |
+| 📄 **Resume Analysis**         | Analyze resumes and extract relevant career information       |
+| ✍️ **AI Resume Rewrite**       | Improve resume content using AI-powered suggestions           |
+| 🎯 **ATS Resume Score**        | Evaluate resume compatibility with Applicant Tracking Systems |
+| 🔎 **Job Description Matcher** | Compare resumes with job descriptions using semantic matching |
+| 🗺️ **Career Roadmap**         | Generate personalized career development roadmaps             |
+| 💻 **Portfolio Analyzer**      | Analyze portfolio and GitHub-related information              |
+| 🤖 **AI Interview Simulator**  | Practice interview questions and receive evaluation           |
+| 💰 **Salary Predictor**        | Predict salary ranges using machine learning                  |
+| 🧩 **Skill Gap Analysis**      | Identify missing skills and receive recommendations           |
+| 👥 **Recruiter Dashboard**     | Compare candidates and analyze candidate information          |
+| 🔍 **Explainable AI**          | Provide explanations for selected ML predictions              |
+| 📊 **Analytics Dashboard**     | Visualize career and user-related analytics                   |
+| 🔐 **Authentication**          | Secure user registration and login using JWT                  |
 
 ---
 
-## 🏛️ System Architecture
+## 🏗️ System Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    TonyCV v3.0.0                            │
-├──────────────────────┬──────────────────────────────────────┤
-│   FRONTEND (Vite)    │          BACKEND (FastAPI)           │
-│   React 19           │  ┌──────────────────────────────┐   │
-│   Tailwind CSS       │  │  ML Pipeline                 │   │
-│   Framer Motion      │  │  ├─ RandomForestClassifier   │   │
-│   React Router v6    │  │  ├─ BERT Semantic Matcher    │   │
-│                      │  │  └─ spaCy NLP Parser         │   │
-│   8 New Feature Pages│  ├──────────────────────────────┤   │
-│   + 7 Existing Pages │  │  Feature Router (/features/) │   │
-│                      │  │  ├─ /rewrite                 │   │
-│   GitHub Pages Host  │  │  ├─ /ats-score               │   │
-│                      │  │  ├─ /jd-match                │   │
-│                      │  │  ├─ /roadmap                 │   │
-│                      │  │  ├─ /github-stats            │   │
-│                      │  │  ├─ /interview/question      │   │
-│                      │  │  ├─ /salary-predict          │   │
-│                      │  │  └─ /skill-gap-recommendations│   │
-│                      │  │  Auth Router (/auth/)         │   │
-│                      │  │  Core Router (/analyze, etc.) │   │
-│                      │  └──────────────────────────────┘   │
-│                      │          Render.com Host            │
-└──────────────────────┴──────────────────────────────────────┘
+```text
+                    ┌─────────────────────────┐
+                    │      SmartVision        │
+                    │        Analyzer         │
+                    └────────────┬────────────┘
+                                 │
+                    ┌────────────▼────────────┐
+                    │      React Frontend     │
+                    │ React 19 + Vite +       │
+                    │ Tailwind CSS             │
+                    └────────────┬────────────┘
+                                 │
+                              REST API
+                                 │
+                    ┌────────────▼────────────┐
+                    │      FastAPI Backend     │
+                    │ Authentication + Routes │
+                    └────────────┬────────────┘
+                                 │
+              ┌──────────────────┼──────────────────┐
+              │                  │                  │
+      ┌───────▼───────┐  ┌──────▼──────┐  ┌──────▼──────┐
+      │ ML Pipeline   │  │ NLP Pipeline│  │   Database  │
+      │ Scikit-Learn  │  │ spaCy/BERT  │  │   SQLite    │
+      └───────────────┘  └─────────────┘  └─────────────┘
 ```
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-|:---|:---|
-| **Frontend** | React 19, Vite, Tailwind CSS, Framer Motion, React Router v6 |
-| **Backend** | FastAPI 0.110, Uvicorn, Python 3.12+, Pydantic v2 |
-| **ML/Analytics** | Scikit-Learn, Pandas, NumPy, Joblib, RandomForest |
-| **NLP** | spaCy (en_core_web_sm), sentence-transformers (BERT), PDFPlumber |
-| **Auth** | JWT (python-jose), bcrypt (passlib), SQLite |
-| **Frontend Hosting** | GitHub Pages (automated via CI/CD) |
-| **Backend Hosting** | Render Web Service |
-| **CI/CD** | GitHub Actions (auto-build + deploy on push to main) |
+### Frontend
+
+* React 19
+* Vite
+* Tailwind CSS
+* Framer Motion
+* React Router
+* JavaScript / JSX
+
+### Backend
+
+* Python 3.12+
+* FastAPI
+* Uvicorn
+* Pydantic
+* JWT Authentication
+
+### Machine Learning & Analytics
+
+* Scikit-Learn
+* Random Forest
+* Pandas
+* NumPy
+* Joblib
+
+### Natural Language Processing
+
+* spaCy
+* Sentence Transformers
+* BERT-based semantic matching
+* PDFPlumber
+
+### Database & Security
+
+* SQLite
+* JWT
+* Python-JOSE
+* Passlib / bcrypt
+
+### Development & Deployment
+
+* Git
+* GitHub
+* GitHub Actions
+* Docker
+* Docker Compose
 
 ---
 
-## 🚀 Local Development Setup
+## 📂 Project Structure
 
-> **⚠️ CRITICAL RULE FOR CONTRIBUTORS:** 
-> From now on, when making changes, **you MUST use the localhost environment** (`http://localhost:5173` for frontend and `http://localhost:8000` for backend). 
-> **DO NOT** modify the files to point to or test against the production Render backend or the live GitHub Pages frontend. Ensure your local environment variables (like in `.env`) point to `localhost` and test everything locally before submitting any changes.
-
-### Prerequisites
-- Node.js v18+
-- Python 3.11 or 3.12+
-- Git
-
-### Manual Installation
-
-**Backend:**
-```bash
-cd backend
-python -m venv .venv
-.\.venv\Scripts\activate        # Windows
-# source .venv/bin/activate     # Mac/Linux
-
-pip install -r requirements.txt
-> **Note:** The ML model (`model.pkl`) is not committed to this repository.
-> It will be **automatically trained** the first time the backend starts up
-> using `backend/ml_pipeline/synthetic_data.py`. This takes ~10–30 seconds
-> on first boot and is a one-time cost per environment.
->
-> To regenerate manually at any time:
-> ```bash
-> python -c "from ml_pipeline.model_manager import load_model; load_model()"
-> ```
-uvicorn main:app --reload
-# API available at http://localhost:8000
-# Swagger docs at http://localhost:8000/docs
-```
-
-**Frontend:**
-```bash
-cd frontend
-npm install
-npm run dev
-# App available at http://localhost:5173
-```
-
----
-
-### 🐳 Docker Setup (Recommended for cross-platform)
-
-No need to install Python, Node, or spaCy models locally - just Docker.
-
-**Prerequisites:** Docker Desktop (or Docker Engine + Compose) installed.
-
-```bash
-cp .env.example .env
-docker compose up --build
-```
-
-- Frontend: http://localhost:5173
-- Backend: http://localhost:8000
-- API docs: http://localhost:8000/docs
-
-To stop:
-```bash
-docker compose down
-```
-
-To rebuild after dependency changes:
-```bash
-docker compose up --build
-```
-
----
-
-## 📡 API Endpoints
-
-### Core Analysis
-| Method | Endpoint | Description |
-|:---|:---|:---|
-| `POST` | `/analyze` | Full CV analysis (PDF upload) |
-| `GET` | `/companies` | List supported companies |
-| `GET` | `/metrics` | ML model performance metrics |
-| `GET` | `/market-pulse` | Trending skills market data |
-| `POST` | `/evaluate-answer` | Interview answer evaluation |
-
-### Auth
-| Method | Endpoint | Description |
-|:---|:---|:---|
-| `POST` | `/auth/register` | User registration |
-| `POST` | `/auth/login` | User login (returns JWT) |
-
-### Feature Endpoints (New v3.0.0)
-| Method | Endpoint | Description |
-|:---|:---|:---|
-| `POST` | `/features/rewrite` | AI resume section rewriter |
-| `POST` | `/features/ats-score` | ATS compatibility score |
-| `POST` | `/features/jd-match` | Job description matcher |
-| `POST` | `/features/roadmap` | Career roadmap generator |
-| `POST` | `/features/github-stats` | GitHub developer intelligence |
-| `POST` | `/features/portfolio-analyze` | Multi-platform portfolio analyzer |
-| `POST` | `/features/interview/question` | Interview question generator |
-| `POST` | `/features/interview/evaluate` | Answer evaluator with feedback |
-| `POST` | `/features/recruiter/compare` | Candidate ranking/comparison |
-| `GET` | `/features/resume-builder/templates` | Resume template options |
-| `POST` | `/features/salary-predict` | Salary range predictor |
-| `GET` | `/features/explain-predictions` | Explainable AI factors |
-| `GET` | `/features/skill-gap-recommendations` | Skill gap + learning links |
-| `GET` | `/features/user-analytics` | User progress analytics |
-
-> Full interactive API docs: [tonycv-backend.onrender.com/docs](https://tonycv-backend.onrender.com/docs)
-
----
-
-## ☁️ Production Deployment
-
-| Layer | Platform | URL |
-|:---|:---|:---|
-| **Frontend** | GitHub Pages | [prashant-singh-rawat.github.io/ML-Project-CV-Analysis](https://prashant-singh-rawat.github.io/ML-Project-CV-Analysis/) |
-| **Backend API** | Render (Web Service) | [tonycv-backend.onrender.com](https://tonycv-backend.onrender.com) |
-
-### Deploy Backend to Render
-1. Go to [Render Dashboard](https://dashboard.render.com) → **New → Blueprint**
-2. Connect your GitHub repository
-3. Render auto-detects `render.yaml` and sets up the service
-4. Set `JWT_SECRET_KEY` under **Environment** tab
-5. Click **Apply** — backend builds and deploys automatically
-
-### Deploy Frontend to GitHub Pages
-```bash
-cd frontend
-npm run build
-# GitHub Actions CI/CD automatically deploys dist/ to GitHub Pages on every push to main
-```
-
----
-
-## 📁 Project Structure
-
-```
-ML-Project-CV-Analysis/
-├── backend/
-│   ├── main.py                    # FastAPI app entry point
-│   ├── requirements.txt
-│   ├── routes/
-│   │   ├── __init__.py
-│   │   └── features.py            # 14 new feature endpoints (v3.0.0)
-│   ├── auth/
-│   │   ├── auth_routes.py         # JWT auth endpoints
-│   │   ├── auth_utils.py
-│   │   └── user_db.py
-│   ├── ml_pipeline/
-│   │   ├── model_manager.py       # RandomForest trainer + predictor
-│   │   ├── semantic_matcher.py    # BERT semantic skill matching
-│   │   ├── synthetic_data.py
-│   │   └── model.pkl
-│   └── utils/
-│       └── cv_parser.py           # spaCy PDF parser
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx                # Router + Nav (updated v3.0.0)
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   ├── Analyze.jsx
-│   │   │   ├── ResumeRewritePage.jsx   # NEW
-│   │   │   ├── AtsScorePage.jsx        # NEW
-│   │   │   ├── JdMatchPage.jsx         # NEW
-│   │   │   ├── CareerRoadmapPage.jsx   # NEW
-│   │   │   ├── InterviewSimulatorPage.jsx # NEW
-│   │   │   ├── SalaryPredictPage.jsx   # NEW
-│   │   │   ├── SkillGapPage.jsx        # NEW
-│   │   │   └── PortfolioAnalyzerPage.jsx # NEW
-│   │   └── components/
-│   │       ├── Dashboard.jsx
-│   │       ├── BiometricInterview.jsx
-│   │       └── RegisterPopup.jsx
-│   └── package.json
+```text
+SmartVision-Analyzer/
+│
 ├── .github/
 │   └── workflows/
-│       └── ci.yml                 # CI/CD: build + deploy to GitHub Pages
-├── render.yaml                    # Render backend deployment config
+│
+├── backend/
+│   ├── auth/
+│   │   ├── auth_routes.py
+│   │   ├── auth_utils.py
+│   │   ├── oauth_store.py
+│   │   ├── resume_history_db.py
+│   │   └── user_db.py
+│   │
+│   ├── routes/
+│   ├── ml_pipeline/
+│   ├── utils/
+│   ├── tests/
+│   ├── main.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.*
+│
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── render.yaml
+├── netlify.toml
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
 └── README.md
 ```
 
 ---
 
+## ⚙️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/saivarsha855-ui/SmartVision-Analyzer.git
+cd SmartVision-Analyzer
+```
+
+---
+
+## 🐍 Backend Setup
+
+Navigate to the backend:
+
+```bash
+cd backend
+```
+
+Create a virtual environment:
+
+### Windows
+
+```powershell
+python -m venv venv
+venv\Scripts\activate
+```
+
+### macOS / Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start the FastAPI server:
+
+```bash
+uvicorn main:app --reload
+```
+
+The backend will be available at:
+
+```text
+http://localhost:8000
+```
+
+FastAPI documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 💻 Frontend Setup
+
+Open a new terminal and navigate to the frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend will normally be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 🐳 Running with Docker
+
+The project also includes Docker configuration.
+
+Run:
+
+```bash
+docker-compose up --build
+```
+
+To stop the containers:
+
+```bash
+docker-compose down
+```
+
+---
+
+## 🔌 API Endpoints
+
+### Core APIs
+
+| Method | Endpoint           | Purpose                      |
+| ------ | ------------------ | ---------------------------- |
+| POST   | `/analyze`         | Analyze resume information   |
+| GET    | `/companies`       | Retrieve company information |
+| GET    | `/metrics`         | Retrieve analytics metrics   |
+| GET    | `/market-pulse`    | Retrieve market information  |
+| POST   | `/evaluate-answer` | Evaluate an interview answer |
+
+### Authentication APIs
+
+| Method | Endpoint         | Purpose             |
+| ------ | ---------------- | ------------------- |
+| POST   | `/auth/register` | Register a new user |
+| POST   | `/auth/login`    | Authenticate a user |
+
+### Career Intelligence APIs
+
+| Method | Endpoint                              | Purpose                           |
+| ------ | ------------------------------------- | --------------------------------- |
+| POST   | `/features/rewrite`                   | AI resume rewriting               |
+| POST   | `/features/ats-score`                 | Calculate ATS score               |
+| POST   | `/features/jd-match`                  | Match resume with job description |
+| POST   | `/features/roadmap`                   | Generate career roadmap           |
+| POST   | `/features/github-stats`              | Retrieve GitHub statistics        |
+| POST   | `/features/portfolio-analyze`         | Analyze portfolio                 |
+| POST   | `/features/interview/question`        | Generate interview questions      |
+| POST   | `/features/interview/evaluate`        | Evaluate interview responses      |
+| POST   | `/features/recruiter/compare`         | Compare candidates                |
+| GET    | `/features/resume-builder/templates`  | Retrieve resume templates         |
+| POST   | `/features/salary-predict`            | Predict salary                    |
+| GET    | `/features/explain-predictions`       | Retrieve prediction explanations  |
+| GET    | `/features/skill-gap-recommendations` | Generate skill recommendations    |
+| GET    | `/features/user-analytics`            | Retrieve user analytics           |
+
+---
+
+## 🧠 Machine Learning Pipeline
+
+SmartVision Analyzer uses multiple AI/ML techniques for career intelligence.
+
+### Resume Intelligence
+
+The system processes resume documents and extracts relevant information such as:
+
+* Skills
+* Experience
+* Education
+* Career-related information
+
+### Semantic Matching
+
+Sentence Transformer / BERT-based models are used to calculate semantic similarity between resume content and job descriptions.
+
+### Salary Prediction
+
+Machine learning models are used to estimate salary-related outcomes based on available career features.
+
+### Skill Gap Analysis
+
+The system compares existing candidate skills against expected job requirements and identifies potential skill gaps.
+
+### Explainable AI
+
+Selected predictions can be accompanied by explanations to help users understand the factors contributing to the model output.
+
+---
+
+## 🔐 Security
+
+Sensitive local configuration files should **never be committed to the repository**.
+
+The project uses environment variables and local configuration for sensitive information.
+
+Examples of files that should remain local:
+
+```text
+.env
+.env.local
+backend/auth/.jwt_secret
+*.db
+*.sqlite
+*.pkl
+*.joblib
+```
+
+Always verify your changes before pushing them to GitHub.
+
+---
+
+## 🧪 Development Guidelines
+
+Before submitting changes:
+
+1. Run the backend locally.
+2. Run the frontend locally.
+3. Test the affected feature.
+4. Check for console errors.
+5. Verify API responses.
+6. Make sure sensitive files are not tracked.
+7. Commit only the required changes.
+
+Example:
+
+```bash
+git status
+git add .
+git commit -m "Describe your changes"
+git push
+```
+
+---
+
 ## 🤝 Contributing
-We welcome contributions! Check our [GitHub Issues](https://github.com/Prashant-Singh-Rawat/ML-Project-CV-Analysis/issues) tab for requested features and bug reports. Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
+Contributions are welcome.
+
+To contribute:
+
+1. Fork the repository.
+2. Create a feature branch.
+
+```bash
+git checkout -b feature/your-feature
+```
+
+3. Make your changes.
+4. Test the changes locally.
+5. Commit your changes.
+
+```bash
+git commit -m "Add your feature"
+```
+
+6. Push your branch.
+
+```bash
+git push origin feature/your-feature
+```
+
+7. Open a Pull Request.
+
+Please review the project's `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` before contributing.
 
 ---
 
 ## 📜 License
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the **MIT License**.
+
+See the `LICENSE` file for more information.
 
 ---
 
-## 📈 Changelog
+## 👩‍💻 Developer
 
-### v3.0.0 — June 2026
-- ✨ 14 new AI-powered feature endpoints
-- 🎨 8 new premium frontend pages
-- 🗺️ Career roadmap generator
-- 🎤 AI interview simulator with multi-stage support
-- 💰 Salary prediction engine
-- 🐙 GitHub developer intelligence scoring
-- 📊 ATS compatibility scoring with breakdown
-- 🎯 Job description semantic matcher
-- 📈 Skill gap analysis + curated learning links
-- 🌐 Portfolio analyzer (multi-platform)
+**Sai Varsha**
 
-### v2.0.0 — May 2026
-- BERT semantic skill matching
-- JWT authentication system
-- Biometric interview simulator
-- Resume builder with templates
+GitHub:
+https://github.com/saivarsha855-ui
 
-### v1.0.0 — April 2026
-- Initial release: CV analysis + placement prediction
-- RandomForest ML pipeline
-- spaCy NLP parser
+Repository:
+https://github.com/saivarsha855-ui/SmartVision-Analyzer
 
 ---
-*Developed with ❤️ by [Prashant Singh Rawat](https://github.com/Prashant-Singh-Rawat)*
+
+## ⭐ Support
+
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
+
+Thank you for checking out **SmartVision Analyzer**! 🚀
