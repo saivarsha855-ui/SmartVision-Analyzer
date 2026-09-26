@@ -42,3 +42,7 @@ backend/ml_pipeline/model.pkl
 *.sqlite
 backend/auth/*.db
 backend/auth/*.sqlite
+# Authentication secrets and local databases
+backend/auth/.jwt_secret
+backend/auth/users.db
+backend/auth/*.db
